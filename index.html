@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to My To-Do Application</h1>
+
+        <div id="task-input">
+            <input type="text" id="taskDescription" placeholder="Write your task here">
+            <button onclick="todoApp.addTask()">Add Task</button>
+            <button onclick="todoApp.clearAllTasks()">Clear All</button>
+            <p id="error" class="error"></p>
+        </div>
+
+        <h2>To-Do</h2>
+        <ul id="todoList" class="task-list"></ul>
+
+        <h2>Completed</h2>
+        <ul id="completedList" class="task-list"></ul>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

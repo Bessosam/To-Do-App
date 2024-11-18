@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #eaeef3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('images/to-do-image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    animation: bodyAnimation 8s infinite alternate;
+  }
+  
+  @keyframes bodyAnimation {
+    0% {
+      transform: scale(1);
+      background-position: center;
+    }
+    50% {
+      transform: scale(1.02);
+      background-position: top left;
+    }
+    100% {
+      transform: scale(1);
+      background-position: bottom right;
+    }
+  }
+  
+  #container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: headerAnimation 3s infinite alternate;
+  }
+  
+  @keyframes headerAnimation {
+    0% {
+      color: #007bff;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+      transform: rotate(-5deg);
+    }
+    50% {
+      color: #ff5733;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      transform: rotate(5deg);
+    }
+    100% {
+      color: #333;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+      transform: rotate(0deg);
+    }
+  }
+  
+  #task-input {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  #taskDescription {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  
+  #taskDescription:focus {
+    border-color: #007bff;
+    outline: none;
+    transform: scale(1.05);
+  }
+  
+  #task-input button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  #task-input button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+  }
+  
+  .error {
+    color: #dc3545;
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    animation: errorShake 1s ease-in-out;
+  }
+  
+  @keyframes errorShake {
+    0% {
+      transform: translateX(-5px);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  h2 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    color: #444;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: left;
+    animation: textMove 1.5s ease-in-out;
+  }
+  
+  @keyframes textMove {
+    0% {
+      transform: translateX(-10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .task-list-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 48%;  /* Adjust width to fit side by side */
+  }
+  
+  .task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: #f9f9fb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: taskEnter 0.5s ease-out;
+  }
+  
+  @keyframes taskEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .task:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+  }
+  
+  .task.completed {
+    text-decoration: line-through;
+    color: #888;
+    background-color: #e0ffe0;
+  }
+  
+  .task button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .edit-btn {
+    background-color: #ffc107;
+    color: #ffffff;
+  }
+  
+  .edit-btn:hover {
+    background-color: #e0a800;
+    transform: scale(1.1);
+  }
+  
+  .complete-btn {
+    background-color: #28a745;
+    color: #ffffff;
+  }
+  
+  .complete-btn:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+  }
+  
+  .clear-btn {
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .clear-btn:hover {
+    background-color: #5a6268;
+    transform: scale(1.1);
+  }
+  
+  .task input[type="text"] {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  
+  .task input[type="text"]:focus {
+    border-color: #007bff;
+    transform: scale(1.05);
+  }
+  
+  button:focus,
+  input:focus {
+    outline: none;
+  }
+  
+  @media (max-width: 500px) {
+    #container {
+      padding: 20px;
+      width: 90%;
+    }
+  
+    h1 {
+      font-size: 2em;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+    }
+  
+    .task {
+      padding: 10px;
+    }
+  
+    .task-list-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .task-list {
+      width: 100%;
+    }
+  }
+  
